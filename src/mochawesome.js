@@ -45,6 +45,9 @@ function done(output, options, config, failures, exit) {
       } else {
         jsonFile && log(`Report JSON saved to ${jsonFile}`, null, config);
         htmlFile && log(`Report HTML saved to ${htmlFile}`, null, config);
+        const execSync = require('child_process').execSync;
+        const op = execSync("npm run qtest", { encoding: 'utf-8'});
+        console.log(op);
       }
     })
     .catch(err => {
